@@ -65,6 +65,17 @@ function HashSet(param1, param2) {
         return hashTable.isEmpty();
     };
 
+    this.each = function(callback) {
+        hashTable.each(function(key, value) { callback(key); });
+    };
+
+    this.equals = function(other) {
+        if (!other.hasOwnProperty("hashTable")) {
+            return false;
+        }
+        return hashTable.equals(other.hashTable);
+    };
+
     this.clone = function() {
         var h = new HashSet(param1, param2);
         h.addAll(hashTable.keys());
